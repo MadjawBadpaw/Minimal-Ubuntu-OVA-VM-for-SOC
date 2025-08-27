@@ -1,6 +1,5 @@
-***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects*** **(WITHOUT ISO)**
-*Note: You have to download Ubuntu 22.04 LTS iso (jammy) then import the ova*
-**limk** {}
+***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects*** 
+**link** {}
 
 **Overview**
 
@@ -56,7 +55,7 @@ Review Appliance Settings:
 Vendor Name: Yugam Thakur
 Product Name: Ubuntu 22.04 Clean VM
 Version: 1.0
-Description: Clean Ubuntu 22.04 VM for cybersecurity projects
+Description: Clean Ubuntu 22.04 VM for SOC/cybersecurity projects
 MAC Address Policy: Strip all MAC addresses
 Manifest file: Keep checked
 Include ISO files: Leave unchecked
