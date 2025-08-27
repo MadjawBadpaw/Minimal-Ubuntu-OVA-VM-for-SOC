@@ -1,6 +1,7 @@
 ***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects**
 
-{}
+**limk** {}
+
 **Overview**
 
 This Virtual Machine (VM) contains Ubuntu 22.04 LTS pre-configured for cybersecurity learning, testing, and SOC-style projects.
@@ -49,7 +50,7 @@ sudo netplan apply
 
 **Importing the OVA**
 
-Download the OVA from Google Drive. {}
+Download the OVA from MegaNZ link. {}
 Open VirtualBox → File → Import Appliance → Choose OVA
 Review Appliance Settings:
 Vendor Name: Yugam Thakur
