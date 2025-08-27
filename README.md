@@ -1,4 +1,4 @@
-***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects**
+***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects** **(WITHOUT ISO)**
 
 **limk** {}
 
