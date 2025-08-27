@@ -1,6 +1,8 @@
 ***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects*** 
 **link** {}
 
+**Credentials at last**
+
 **Overview**
 
 This Virtual Machine (VM) contains Ubuntu 22.04 LTS pre-configured for cybersecurity learning, testing, and SOC-style projects.
@@ -135,3 +137,11 @@ Suricata Docs
 Zeek Docs
 Shuffle Docs
 Wazuh Docs
+
+
+**Creedentials**
+username = soc
+password = password123
+root password = in README folder at desktop 
+
+
