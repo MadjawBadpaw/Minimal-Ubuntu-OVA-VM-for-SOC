@@ -1,55 +1,36 @@
-# Minimal-Ubuntu-OVA-VM-for-SOC
-Ubuntu 22.04 Clean VM for Cybersecurity Projects:
-Overview:
+***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects**
+
+{}
+**Overview**
 
 This Virtual Machine (VM) contains Ubuntu 22.04 LTS pre-configured for cybersecurity learning, testing, and SOC-style projects.
-It is a clean environment:
+Clean environment: No personal files, history, or logs.
+Ready for use in VirtualBox or other OVF-compatible hypervisors.
+Includes essential tools for network monitoring, intrusion detection, and security automation.
 
-No personal files or history.
-
-All logs and temporary files cleared.
-
-Ready for immediate use in VirtualBox or other OVF-compatible hypervisors.
-
-The VM includes essential tools for network monitoring, intrusion detection, and security automation, along with example configurations.
-
-Contents
+*Contents*
 
 Operating System: Ubuntu 22.04 LTS
 
-Tools Installed:
+**Installed Tools:**
 
-Wireshark – Network protocol analyzer for packet inspection.
+Wireshark – Network protocol analyzer for packet inspection
+Nmap – Port scanning and network discovery
+Remmina – Remote desktop client (RDP, VNC, SSH)
+Suricata – High-performance network IDS/IPS
+Zeek (formerly Bro) – Network security monitoring and logging
+Shuffle – Security automation/orchestration platform
+Wazuh Agent – Security monitoring agent for centralized logging
+Python 3 & pip – For scripting and automation
+Other tools – Curl, net-tools, Git, etc.
 
-Nmap – Port scanning and network discovery.
+**Network & VM Configuration**
+Network Adapter: NAT by default; MAC addresses stripped for safe sharing
+Optional: Add a bridged adapter for local network testing
+IP Assignment: Static IP recommended for consistent testing
 
-Remmina – Remote desktop client (RDP, VNC, SSH).
+Example Netplan Static IP Setup
 
-Suricata – High-performance network IDS/IPS for monitoring network traffic.
-
-Zeek (formerly Bro) – Network security monitoring and logging framework.
-
-Shuffle – Security automation/orchestration platform for SOC workflows.
-
-Wazuh Agent – Security monitoring agent for centralized logging.
-
-Python 3 & pip – For scripting and cybersecurity automation.
-
-Other tools – Curl, net-tools, Git, etc., for network testing and scripting.
-
-Network & VM Configuration
-
-Network Adapter: NAT by default; MAC addresses stripped for safe sharing.
-
-Optional: Can add a bridged adapter for local network testing.
-
-IP Assignment:
-
-Static IP recommended for consistent network testing.
-
-Can configure in /etc/netplan/01-netcfg.yaml or via VirtualBox host-only/NAT settings.
-
-Sample Netplan Static IP Setup
 network:
   version: 2
   renderer: networkd
@@ -63,130 +44,94 @@ network:
 
 
 Apply changes:
-
 sudo netplan apply
 
-Importing the OVA
 
-Download the OVA from Google Drive.
+**Importing the OVA**
 
-Open VirtualBox → File → Import Appliance → Choose OVA.
-
+Download the OVA from Google Drive. {}
+Open VirtualBox → File → Import Appliance → Choose OVA
 Review Appliance Settings:
-
 Vendor Name: Yugam Thakur
-
 Product Name: Ubuntu 22.04 Clean VM
-
 Version: 1.0
+Description: Clean Ubuntu 22.04 VM for cybersecurity projects
+MAC Address Policy: Strip all MAC addresses
+Manifest file: Keep checked
+Include ISO files: Leave unchecked
+Finish the import
 
-Description: Clean Ubuntu 22.04 VM for cybersecurity projects.
 
-Select MAC Address Policy: Strip all MAC addresses
+***Working with Installed Tools***
 
-Keep Manifest file checked; leave ISO files unchecked.
-
-Finish the import.
-
-Working with Installed Tools
-1. Wireshark
-
-Capture live network traffic.
-
-Run with root privileges:
-
+**Wireshark**
+Capture live network traffic:
 sudo wireshark
 
-
-Useful for analyzing network attacks or suspicious traffic.
-
-2. Nmap
+**Nmap**
 
 Scan ports and detect hosts:
-
 nmap -sV 192.168.56.1
 
-3. Remmina
+**Remmina**
+Connect to other machines via RDP, SSH, or VNC.
 
-Connect to other machines using RDP, SSH, or VNC.
+**Suricata**
 
-Pre-configured for network testing.
+Monitor network traffic and generate alerts:
+Config: /etc/suricata/suricata.yaml
 
-4. Suricata
-
-Monitors network traffic in real-time.
-
-Generates alerts and logs for suspicious activity.
-
-Configuration: /etc/suricata/suricata.yaml
-
-Start/stop Suricata:
+*Start/stop:*
 
 sudo systemctl start suricata
 sudo systemctl stop suricata
 
-5. Zeek
+**Zeek**
 
-Network monitoring and analysis platform.
+Network monitoring and logging:
+Logs location: /usr/local/zeek/logs/
 
-Logs network activity for security investigation.
+Start Zeek on interface:
+sudo zeek -i enp0s3 (enp0s3 instead of wlan0 etc because its a VM)
 
-Default logs located at /usr/local/zeek/logs/.
+**Shuffle**
 
-Start Zeek on an interface:
+Security automation platform for SOC workflows:
+Web interface accessible via browser on VM
+Integrates alerts from Wazuh, Suricata, and Zeek
 
-sudo zeek -i enp0s3
-
-6. Shuffle
-
-Security orchestration and automation platform.
-
-Integrates with alerts from Wazuh, Suricata, Zeek, etc.
-
-Web interface accessible via browser on the VM (default port configurable in setup).
-
-7. Wazuh Agent
-
-Sends system logs to a Wazuh server for monitoring.
-
-Configuration at /var/ossec/etc/ossec.conf.
-
-Useful for SOC practice and automated alerting.
-
+**Wazuh Agent**
+Single agent for centralised monitoring, add Wazuh server IP in config file at <MANAGER-IP> location.
+Centralized log monitoring
+Config: /var/ossec/etc/ossec.conf
+Useful for SOC practice and automated alerting
 VM Upgrade & Maintenance
 
-Update packages:
+**Wazuh Server**
+Use Wazuh Server for log indexing monitoring, you can use them in:
+1)AWS EC2 for wazuh server.(Free Tier)
+2)Another device with wazuh server configured.
+3)Same device with wazuh server(localhost=127.0.0.1) 
 
-sudo apt update && sudo apt upgrade -y
 
-
-Upgrade Ubuntu version:
-
+Upgrade Ubuntu release:
 sudo do-release-upgrade
 
 
-⚠️ Upgrading may affect pre-configured tools or scripts.
+**⚠️ Upgrading may affect pre-configured tools or scripts.**
 
-Recommendations for Use
+**Recommendations:**
 
 Use snapshots before major changes.
+Keep the VM isolated from your host when testing network monitoring or SOC tools
+For sharing or team projects, provide a fresh OVA export after customizations
 
-Keep the VM isolated from your host when testing network monitoring or SOC tools.
+References & Resources:
 
-For sharing or team projects, provide a fresh OVA export after any customizations.
-
-References & Resources
-
-Ubuntu 22.04 Official Docs
-
+Ubuntu 22.04 Docs
 Wireshark User Guide
-
 Nmap Reference
-
 Suricata Docs
-
 Zeek Docs
-
-Shuffle Documentation
-
+Shuffle Docs
 Wazuh Docs
