@@ -1,5 +1,5 @@
-***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects** **(WITHOUT ISO)**
-
+***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects*** **(WITHOUT ISO)**
+*Note: You have to download Ubuntu 22.04 LTS iso (jammy) then import the ova*
 **limk** {}
 
 **Overview**
