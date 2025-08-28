@@ -1,6 +1,7 @@
 ***Minimal Ubuntu 22.04 Clean VM OVA for SOC/Cybersecurity Projects*** 
 
-**link** {}
+**link** 
+{ https://mega.nz/file/aToRkTZA#fiXxXEcK7X9LvX21qNEULNhkSs2oCzC_tQOPipS1tmw }
 
 **Credentials at last**
 
@@ -52,7 +53,7 @@ sudo netplan apply
 
 **Importing the OVA**
 
-Download the OVA from MegaNZ link. {}
+Download the OVA from MegaNZ link. { https://mega.nz/file/aToRkTZA#fiXxXEcK7X9LvX21qNEULNhkSs2oCzC_tQOPipS1tmw }
 Open VirtualBox → File → Import Appliance → Choose OVA
 Review Appliance Settings:
 Vendor Name: Yugam Thakur
